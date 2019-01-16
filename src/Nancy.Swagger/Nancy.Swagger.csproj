@@ -25,7 +25,7 @@
   <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Nancy.Swagger.xml</DocumentationFile>
     <RepositoryType>https://github.com/ThiagoBarradas/Nancy.Swagger</RepositoryType>
-    <Version>2.2.1</Version>
+    <Version>2.2.1-alpha</Version>
   </PropertyGroup>
 
   <ItemGroup>

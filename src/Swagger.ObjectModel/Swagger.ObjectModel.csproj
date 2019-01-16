@@ -5,11 +5,11 @@
     <APPVEYOR_BUILD_NUMBER Condition="'$(APPVEYOR_BUILD_NUMBER)' == ''">1</APPVEYOR_BUILD_NUMBER>
     <VersionPrefix>2.2.$(APPVEYOR_BUILD_NUMBER)</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
-    <Authors>Swagger.ObjectModel</Authors>
+    <Authors>Swagger.ObjectModel.JsonNET</Authors>
     <TargetFrameworks>net452;netstandard2.0;netstandard1.6;netcoreapp1.0</TargetFrameworks>
     <AssemblyName>Swagger.ObjectModel.JsonNET</AssemblyName>
-    <PackageId>Swagger.ObjectModel</PackageId>
-    <PackageTags>Swagger</PackageTags>
+    <PackageId>Swagger.ObjectModel.JsonNET</PackageId>
+    <PackageTags>Swagger, Nancy, Newtonsoft, Model</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/ThiagoBarradas/Nancy.Swagger/master/etc/logo.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/ThiagoBarradas/Nancy.Swagger</PackageProjectUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/ThiagoBarradas/Nancy.Swagger/master/LICENSE</PackageLicenseUrl>
@@ -24,6 +24,7 @@
 
   <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Swagger.ObjectModel.xml</DocumentationFile>
+    <RepositoryUrl>https://github.com/ThiagoBarradas/Nancy.Swagger</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">

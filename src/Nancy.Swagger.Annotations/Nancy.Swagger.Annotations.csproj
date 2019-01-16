@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Provides Swagger data by annotating modules and routes and newtonsoft</Description>
+    <Description>Provides Swagger data by annotating modules and routes with newtonsoft serializer</Description>
     <APPVEYOR_BUILD_NUMBER Condition="'$(APPVEYOR_BUILD_NUMBER)' == ''">1</APPVEYOR_BUILD_NUMBER>
     <VersionPrefix>2.2.$(APPVEYOR_BUILD_NUMBER)</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
@@ -11,8 +11,8 @@
     <PackageId>Nancy.Swagger.Annotations.JsonNET</PackageId>
     <PackageTags>Nancy;Swagger;Annotations;json;newtonsoft</PackageTags>
     <PackageIconUrl>http://nancyfx.org/nancy-nuget.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/thiagobarradas/Nancy.Swagger</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/thiagobarradas/Nancy.Swagger/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/ThiagoBarradas/Nancy.Swagger</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/ThiagoBarradas/Nancy.Swagger/master/LICENSE</PackageLicenseUrl>
     <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
     <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.6' ">1.6.0</NetStandardImplicitPackageVersion>
     <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netcoreapp1.0' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
@@ -24,7 +24,8 @@
 
   <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Nancy.Swagger.Annotations.xml</DocumentationFile>
-    <Version>2.2.1</Version>
+    <Version>2.2.1-alpha</Version>
+    <RepositoryUrl>https://github.com/ThiagoBarradas/Nancy.Swagger</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
