@@ -24,6 +24,6 @@ namespace Nancy.Swagger.Helpers
             }
 
             return currentProperty.PropertyName;
-        }s
+        }
     }
 }
