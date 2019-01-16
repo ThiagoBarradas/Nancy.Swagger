@@ -25,6 +25,7 @@ build:
 after_test:
   - dotnet pack src/Nancy.Swagger --configuration Release /p:Version=%version%
   - dotnet pack src/Nancy.Swagger.Annotations --configuration Release /p:Version=%version%
+  - dotnet pack src/Swagger.ObjectModel --configuration Release /p:Version=%version%
 
 artifacts:
   - path: src\Nancy.Swagger\bin\Release\netstandard2.0\Nancy.Swagger.dll
