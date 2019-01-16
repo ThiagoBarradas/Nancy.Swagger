@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Provides Swagger data by annotating modules and routes.</Description>
+    <Description>Provides Swagger data by annotating modules and routes and newtonsoft</Description>
     <APPVEYOR_BUILD_NUMBER Condition="'$(APPVEYOR_BUILD_NUMBER)' == ''">1</APPVEYOR_BUILD_NUMBER>
     <VersionPrefix>2.2.$(APPVEYOR_BUILD_NUMBER)</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
-    <Authors>Kristian Hellang;Ciaran Downey;Contributors</Authors>
+    <Authors>Nancy.Swagger.Annotations.JsonNET</Authors>
     <TargetFrameworks>net452;netstandard1.6;netcoreapp1.0</TargetFrameworks>
     <AssemblyName>Nancy.Swagger.Annotations</AssemblyName>
-    <PackageId>Nancy.Swagger.Annotations</PackageId>
-    <PackageTags>Nancy;Swagger;Annotations</PackageTags>
+    <PackageId>Nancy.Swagger.Annotations.JsonNET</PackageId>
+    <PackageTags>Nancy;Swagger;Annotations;json;newtonsoft</PackageTags>
     <PackageIconUrl>http://nancyfx.org/nancy-nuget.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/yahehe/Nancy.Swagger</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/yahehe/Nancy.Swagger/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/thiagobarradas/Nancy.Swagger</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/thiagobarradas/Nancy.Swagger/master/LICENSE</PackageLicenseUrl>
     <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
     <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.6' ">1.6.0</NetStandardImplicitPackageVersion>
     <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netcoreapp1.0' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
@@ -24,6 +24,7 @@
 
   <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Nancy.Swagger.Annotations.xml</DocumentationFile>
+    <Version>2.2.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,0 +1,39 @@
+image: Visual Studio 2013
+platform: Any CPU
+
+environment:
+  version: $(APPVEYOR_BUILD_VERSION)
+
+configuration:
+- Release
+
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '%version%'
+  package_version: '%version%'
+  assembly_version: '%version%'
+  file_version: '%version%'
+  informational_version: '%version%'
+
+build:
+  project: Nancy.Swagger.sln
+
+after_test:
+  - dotnet pack src/Nancy.Swagger --configuration Release /p:Version=%version%
+  - dotnet pack src/Nancy.Swagger.Annotations --configuration Release /p:Version=%version%
+
+artifacts:
+  - path: src\Nancy.Swagger\bin\Release\Nancy.Swagger.dll
+    name: Nancy.Swagger.dll
+  - path: src\Nancy.Swagger\bin\Release\Nancy.Swagger.JsonNET.%version%.nupkg
+    name: Nancy.Swagger.JsonNET.%version%.nupkg
+  - path: src\Nancy.Swagger.Annotations\bin\    Release\Nancy.Swagger.Annotations.dll
+    name: Nancy.Swagger.Annotations.dll
+  - path: src\Nancy.Swagger.Annotations\bin\Release\Nancy.Swagger.Annotations.JsonNET.%version%.nupkg
+    name: Nancy.Swagger.Annotations.JsonNET.%version%.nupkg
+
+deploy:
+  provider: NuGet
+  api_key:
+    secure: csyDlyeSjDmdYAQ/PK0GYNZ4ofK/yC6vd5ZLPnG2TgujmrAW7fUiQxjDVOWD4XAX
