@@ -36,8 +36,8 @@ artifacts:
     name: Nancy.Swagger.Annotations.dll
   - path: src\Nancy.Swagger.Annotations\bin\Any CPU\Release\Nancy.Swagger.Annotations.JsonNET.%version%.nupkg
     name: Nancy.Swagger.Annotations.JsonNET.%version%.nupkg
-  - path: src\Swagger.ObjectModel\bin\Release\netstandard2.0\Swagger.ObjectModel.dll
-    name: Swagger.ObjectModel.dll
+  - path: src\Swagger.ObjectModel\bin\Release\netstandard2.0\Swagger.ObjectModel.JsonNET.dll
+    name: Swagger.ObjectModel.JsonNET.dll
   - path: src\Swagger.ObjectModel\bin\Any CPU\Release\Swagger.ObjectModel.JsonNET.%version%.nupkg
     name: Swagger.ObjectModel.JsonNET.%version%.nupkg
     

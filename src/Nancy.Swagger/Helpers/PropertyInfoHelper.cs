@@ -24,15 +24,6 @@ namespace Nancy.Swagger.Helpers
             }
 
             return currentProperty.PropertyName;
-        }
-
-        //public static string PropertyNames(this IContractResolver resolver, PropertyInfo propertyInfo)
-        //{
-        //    var contract = resolver.ResolveContract(type) as JsonObjectContract;
-        //    if (contract == null)
-        //        return new string[0];
-
-        //    return propertyInfo.PropertyName;
-        //}
+        }s
     }
 }
