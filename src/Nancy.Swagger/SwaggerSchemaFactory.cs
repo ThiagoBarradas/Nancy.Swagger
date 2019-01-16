@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Swagger.ObjectModel;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Swagger.ObjectModel;
 
 namespace Nancy.Swagger
 {
@@ -76,12 +76,12 @@ namespace Nancy.Swagger
                 if (isDefinition)
                 {
                     Type = "object";
-                    Required = (sModel.Required as IList<string>)?.Select(x => x.ToCamelCase()).ToList();
+                    Required = (sModel.Required as IList<string>);
                     Description = sModel.Description;
                     Properties = new Dictionary<string, Schema>();
                     foreach (var member in sModel.Properties)
                     {
-                        Properties.Add(member.Key.ToCamelCase(), GenerateSchemaForProperty(member.Value));
+                        Properties.Add(member.Key, GenerateSchemaForProperty(member.Value));
                     }
                 }
                 else

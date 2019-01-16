@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using Newtonsoft.Json;
 using Swagger.ObjectModel;
-using System.Reflection;
+using System;
+using System.Collections.Concurrent;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 
 namespace Nancy.Swagger
 {
@@ -19,6 +20,11 @@ namespace Nancy.Swagger
         /// The default resource listing path, <c>api-docs</c>.
         /// </summary>
         public const string DefaultResourceListingPath = "";
+
+        /// <summary>
+        /// Json serializer settings
+        /// </summary>
+        public static JsonSerializerSettings JsonSerializerSettings = null;
 
         static SwaggerConfig()
         {

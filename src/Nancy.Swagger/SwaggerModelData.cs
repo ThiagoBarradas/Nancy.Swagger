@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using Nancy.Swagger.Helpers;
+using Swagger.ObjectModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Swagger.ObjectModel;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 
 namespace Nancy.Swagger
 {
@@ -44,6 +43,7 @@ namespace Nancy.Swagger
                 .Select(property => new SwaggerModelPropertyData
                 {
                     Name = property.Name,
+                    ExibitionName = PropertyInfoHelper.GetNameConsideringNewtonsoft(property, SwaggerConfig.JsonSerializerSettings),
                     Type = property.PropertyType
                 });
         }

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Nancy.Swagger.Annotations.Attributes;
+using Nancy.Swagger.Helpers;
+using Newtonsoft.Json;
+using System;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
-using Nancy.Swagger.Annotations.Attributes;
 
 namespace Nancy.Swagger.Annotations.SwaggerObjects
 {
@@ -19,22 +19,25 @@ namespace Nancy.Swagger.Annotations.SwaggerObjects
                                         .Where(pi => pi.CanRead && pi.GetGetMethod(true).IsPublic);
 
             Properties = typeProperties.Where(prop => !prop.GetCustomAttribute<ModelPropertyAttribute>()?.Ignore ?? true)
-                                       .Select(CreateSwaggerModelPropertyData).ToList();
+                                       .Where(prop => SwaggerConfig.JsonSerializerSettings == null || prop.GetCustomAttribute<JsonIgnoreAttribute>() == null)
+                                       .Select(r => CreateSwaggerModelPropertyData(r, SwaggerConfig.JsonSerializerSettings)).ToList();
 
             Description = modelAttr.Description;
         }
 
-        private SwaggerModelPropertyData CreateSwaggerModelPropertyData(PropertyInfo pi)
+        private SwaggerModelPropertyData CreateSwaggerModelPropertyData(PropertyInfo pi, JsonSerializerSettings jsonSerializerSettings)
         {
             var modelProperty = new SwaggerModelPropertyData
             {
                 Type = pi.PropertyType,
-                Name = pi.Name
+                Name = pi.Name,
+                ExibitionName = PropertyInfoHelper.GetNameConsideringNewtonsoft(pi, jsonSerializerSettings),
             };
 
             foreach (var attr in pi.GetCustomAttributes<ModelPropertyAttribute>())
             {
                 modelProperty.Name = attr.Name ?? modelProperty.Name;
+                modelProperty.ExibitionName = modelProperty.Name;
                 modelProperty.Description = attr.Description ?? modelProperty.Description;
                 modelProperty.Minimum = attr.GetNullableMinimum() ?? modelProperty.Minimum;
                 modelProperty.Maximum = attr.GetNullableMaximum() ?? modelProperty.Maximum;

@@ -1,17 +1,17 @@
-﻿using System;
+﻿using Nancy.Routing;
+using Nancy.Swagger.Helpers;
+using Nancy.Swagger.Services;
+using Swagger.ObjectModel;
+using Swagger.ObjectModel.Builders;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Nancy.Routing;
-using Nancy.Swagger.Services;
-using Swagger.ObjectModel;
-using Swagger.ObjectModel.Builders;
 
 namespace Nancy.Swagger
 {
-
     [SwaggerApi]
     public static class SwaggerExtensions
     {
@@ -119,21 +119,22 @@ namespace Nancy.Swagger
 
                     var required = modelDataForClassProperty == null
                         ? properties.Where(p => p.Required || p.Type.IsImplicitlyRequired())
-                            .Select(p => p.Name)
+                            .Select(p => p.ExibitionName)
                             .OrderBy(name => name)
                             .ToList()
                         : modelDataForClassProperty.Properties
                             .Where(p => p.Required || p.Type.IsImplicitlyRequired())
-                            .Select(p => p.Name)
+                            .Select(p => p.ExibitionName)
                             .OrderBy(name => name)
                             .ToList();
 
                     if (!required.Any()) required = null;
 
                     var modelproperties = modelDataForClassProperty == null
-                        ? properties.OrderBy(x => x.Name).ToDictionary(p => p.Name, ToModelProperty)
-                        : modelDataForClassProperty.Properties.OrderBy(x => x.Name)
-                            .ToDictionary(p => p.Name, ToModelProperty);
+                        ? properties.OrderBy(x => x.ExibitionName)
+                            .ToDictionary(p => p.ExibitionName, ToModelProperty)
+                        : modelDataForClassProperty.Properties.OrderBy(x => x.ExibitionName)
+                            .ToDictionary(p => p.ExibitionName, ToModelProperty);
 
                     yield return new Model
                     {
@@ -151,12 +152,12 @@ namespace Nancy.Swagger
                 Description = model.Description,
                 Required = model.Properties
                     .Where(p => p.Required || p.Type.IsImplicitlyRequired())
-                    .Select(p => p.Name)
+                    .Select(p => p.ExibitionName)
                     .OrderBy(name => name)
                     .ToList(),
                 Properties = model.Properties
-                    .OrderBy(p => p.Name)
-                    .ToDictionary(p => p.Name, ToModelProperty)
+                    .OrderBy(p => p.ExibitionName)
+                    .ToDictionary(p => p.ExibitionName, ToModelProperty)
 
                 // TODO: SubTypes and Discriminator
             };
@@ -193,6 +194,7 @@ namespace Nancy.Swagger
             return type.GetTypeInfo().GetProperties()
                 .Select(property => new SwaggerModelPropertyData
                 {
+                    ExibitionName = PropertyInfoHelper.GetNameConsideringNewtonsoft(property, SwaggerConfig.JsonSerializerSettings),
                     Name = property.Name,
                     Type = property.PropertyType
                 }).ToList();

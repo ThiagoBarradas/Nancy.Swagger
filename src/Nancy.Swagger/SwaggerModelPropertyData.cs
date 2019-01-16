@@ -18,6 +18,8 @@ namespace Nancy.Swagger
 
         public string Name { get; set; }
 
+        public string ExibitionName { get; set; }
+
         public bool Required { get; set; }
 
         public Type Type { get; set; }
