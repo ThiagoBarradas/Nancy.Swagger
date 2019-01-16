@@ -1,4 +1,4 @@
-image: Visual Studio 2013
+image: Visual Studio 2017
 platform: Any CPU
 
 environment:
@@ -7,13 +7,15 @@ environment:
 configuration:
   - Release
 
-assembly_info:
+dotnet_csproj:
   patch: true
-  file: AssemblyInfo.*
+  file: '**\*.csproj'
+  version: '%version%'
+  package_version: '%version%'
   assembly_version: '%version%'
-  assembly_file_version: '%version%'
-  assembly_informational_version: '%version%'
-
+  file_version: '%version%'
+  informational_version: '%version%'
+  
 before_build:
   - nuget restore
   
