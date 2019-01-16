@@ -5,17 +5,18 @@ environment:
   version: $(APPVEYOR_BUILD_VERSION)
 
 configuration:
-- Release
+  - Release
 
-dotnet_csproj:
+assembly_info:
   patch: true
-  file: '**\*.csproj'
-  version: '%version%'
-  package_version: '%version%'
+  file: AssemblyInfo.*
   assembly_version: '%version%'
-  file_version: '%version%'
-  informational_version: '%version%'
+  assembly_file_version: '%version%'
+  assembly_informational_version: '%version%'
 
+before_build:
+  - nuget restore
+  
 build:
   project: Nancy.Swagger.sln
 
