@@ -2,7 +2,7 @@ image: Visual Studio 2017
 platform: Any CPU
 
 environment:
-  version: $(APPVEYOR_BUILD_VERSION)
+  version: $(APPVEYOR_BUILD_VERSION)-alpha
 
 configuration:
   - Release
@@ -27,11 +27,11 @@ after_test:
   - dotnet pack src/Nancy.Swagger.Annotations --configuration Release /p:Version=%version%
 
 artifacts:
-  - path: src\Nancy.Swagger\bin\Release\Nancy.Swagger.dll
+  - path: src\Nancy.Swagger\bin\Release\netstandard1.6\Nancy.Swagger.dll
     name: Nancy.Swagger.dll
   - path: src\Nancy.Swagger\bin\Release\Nancy.Swagger.JsonNET.%version%.nupkg
     name: Nancy.Swagger.JsonNET.%version%.nupkg
-  - path: src\Nancy.Swagger.Annotations\bin\    Release\Nancy.Swagger.Annotations.dll
+  - path: src\Nancy.Swagger.Annotations\bin\Release\netstandard1.6\Nancy.Swagger.Annotations.dll
     name: Nancy.Swagger.Annotations.dll
   - path: src\Nancy.Swagger.Annotations\bin\Release\Nancy.Swagger.Annotations.JsonNET.%version%.nupkg
     name: Nancy.Swagger.Annotations.JsonNET.%version%.nupkg
