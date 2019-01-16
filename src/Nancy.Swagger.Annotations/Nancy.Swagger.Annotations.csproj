@@ -6,7 +6,7 @@
     <VersionPrefix>2.2.$(APPVEYOR_BUILD_NUMBER)</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
     <Authors>Nancy.Swagger.Annotations.JsonNET</Authors>
-    <TargetFrameworks>net452;netstandard1.6;netcoreapp1.0</TargetFrameworks>
+    <TargetFrameworks>net452;netstandard2.0;netstandard1.6;netcoreapp1.0</TargetFrameworks>
     <AssemblyName>Nancy.Swagger.Annotations</AssemblyName>
     <PackageId>Nancy.Swagger.Annotations.JsonNET</PackageId>
     <PackageTags>Nancy;Swagger;Annotations;json;newtonsoft</PackageTags>

@@ -1,6 +1,7 @@
 ﻿namespace Swagger.ObjectModel
 {
     using Swagger.ObjectModel.Attributes;
+    using System;
 
     /// <summary>
     /// The api key locations.

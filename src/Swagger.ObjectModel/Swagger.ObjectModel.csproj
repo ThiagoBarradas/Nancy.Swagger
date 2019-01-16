@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>A .NET object model for the Swagger spec.</Description>
+    <Description>A .NET object model for the Swagger spec and Newtonsoft.</Description>
     <APPVEYOR_BUILD_NUMBER Condition="'$(APPVEYOR_BUILD_NUMBER)' == ''">1</APPVEYOR_BUILD_NUMBER>
     <VersionPrefix>2.2.$(APPVEYOR_BUILD_NUMBER)</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
-    <Authors>Kristian Hellang;Ciaran Downey;Contributors</Authors>
-    <TargetFrameworks>net452;netstandard1.6;netcoreapp1.0</TargetFrameworks>
-    <AssemblyName>Swagger.ObjectModel</AssemblyName>
+    <Authors>Swagger.ObjectModel</Authors>
+    <TargetFrameworks>net452;netstandard2.0;netstandard1.6;netcoreapp1.0</TargetFrameworks>
+    <AssemblyName>Swagger.ObjectModel.JsonNET</AssemblyName>
     <PackageId>Swagger.ObjectModel</PackageId>
     <PackageTags>Swagger</PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/yahehe/Nancy.Swagger/master/etc/logo.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/yahehe/Nancy.Swagger</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/yahehe/Nancy.Swagger/master/LICENSE</PackageLicenseUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/ThiagoBarradas/Nancy.Swagger/master/etc/logo.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/ThiagoBarradas/Nancy.Swagger</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/ThiagoBarradas/Nancy.Swagger/master/LICENSE</PackageLicenseUrl>
     <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
     <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.6' ">1.6.0</NetStandardImplicitPackageVersion>
     <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netcoreapp1.0' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
