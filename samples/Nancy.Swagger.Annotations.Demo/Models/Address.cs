@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Nancy.Swagger.Demo.Models
 {
     public class Address
@@ -12,7 +14,11 @@ namespace Nancy.Swagger.Demo.Models
 
         public string PostCode { get; set; }
 
-        public Test Testtt { get; set; }
+        public IEnumerable<Test> Testtt { get; set; }
+
+        public List<Test2> Testtt2 { get; set; }
+
+        public Dictionary<string, Test3> Testtt3 { get; set; }
 
         public HttpStatusCode StatusCode { get; set; }
     }

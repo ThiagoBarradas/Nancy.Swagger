@@ -39,18 +39,28 @@ namespace Nancy.Swagger.Services
 
             foreach (var t in types)
             {
-                if (GetModelForType(t, false) == null)
+                var currentType = t.GetElementType() ?? t;
+
+                if (GetModelForType(currentType, false) == null)
                 {
-                    var model = new SwaggerModelData(t);
+                    var model = new SwaggerModelData(currentType);
                     Add(model);
 
-                    var subTypes = model.ModelType
+                    var subTypes = currentType?
                         .GetProperties().Where(r => Primitive.IsPrimitive(r.PropertyType) == false)                        
                         .Select(r => r.PropertyType);
 
                     if (subTypes?.Any() == true)
                     {
                         AddModels(subTypes.ToArray());
+                    }
+
+                    var generics = currentType
+                       .GenericTypeArguments.Where(r => Primitive.IsPrimitive(r) == false);
+
+                    if (generics?.Any() == true)
+                    {
+                        AddModels(generics.ToArray());
                     }
                 }
             }
