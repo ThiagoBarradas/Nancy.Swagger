@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using Swagger.ObjectModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using Swagger.ObjectModel;
 
 namespace Nancy.Swagger.Services
 {
@@ -23,18 +21,37 @@ namespace Nancy.Swagger.Services
             {
                 model = new SwaggerModelData(t);
                 Add(model);
+
+                foreach (var subType in model.ModelType.GetProperties())
+                {
+                    GetModelForType(subType.PropertyType);
+                }
             }
             return model;
         }
 
         public void AddModels(params Type[] types)
         {
+            if (types == null || types.Any() == false)
+            {
+                return;
+            }
+
             foreach (var t in types)
             {
                 if (GetModelForType(t, false) == null)
                 {
                     var model = new SwaggerModelData(t);
                     Add(model);
+
+                    var subTypes = model.ModelType
+                        .GetProperties().Where(r => Primitive.IsPrimitive(r.PropertyType) == false)                        
+                        .Select(r => r.PropertyType);
+
+                    if (subTypes?.Any() == true)
+                    {
+                        AddModels(subTypes.ToArray());
+                    }
                 }
             }
         }

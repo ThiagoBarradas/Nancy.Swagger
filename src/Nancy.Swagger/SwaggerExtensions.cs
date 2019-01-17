@@ -322,6 +322,7 @@ namespace Nancy.Swagger
 
         public static BodyParameter AddBodySchema(this BodyParameter bodyParameter, Type type, ISwaggerModelCatalog modelCatalog)
         {
+            modelCatalog.GetModelForType(type);
             var schema = GetSchema(modelCatalog, type, false);
             bodyParameter.Schema = schema;
             return bodyParameter;

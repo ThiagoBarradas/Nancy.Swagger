@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp1.0;net452</TargetFrameworks>
+    <TargetFrameworks>net452</TargetFrameworks>
     <AssemblyName>Nancy.Swagger.Autofac.Demo</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>Nancy.Swagger.Autofac.Demo</PackageId>

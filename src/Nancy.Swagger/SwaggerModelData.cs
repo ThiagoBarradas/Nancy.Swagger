@@ -39,13 +39,17 @@ namespace Nancy.Swagger
 
         private IEnumerable<SwaggerModelPropertyData> GetPropertiesFromType(Type type)
         {
-            return type.GetProperties()
+            List<SwaggerModelPropertyData> models = new List<SwaggerModelPropertyData>();
+
+            var properties =  type.GetProperties()
                 .Select(property => new SwaggerModelPropertyData
                 {
                     Name = property.Name,
                     ExibitionName = PropertyInfoHelper.GetNameConsideringNewtonsoft(property, SwaggerConfig.JsonSerializerSettings),
                     Type = property.PropertyType
                 });
+
+            return properties;
         }
 
         public Schema GetSchema(bool isDefinition)

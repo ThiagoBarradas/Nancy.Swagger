@@ -11,8 +11,13 @@ namespace Swagger.ObjectModel
         private static readonly IDictionary<Type, Primitive> Primitives = new Dictionary<Type, Primitive>
         {
             // Integers
+            { typeof(short), new Primitive("integer", "int16") },
             { typeof(int), new Primitive("integer", "int32") },
             { typeof(long), new Primitive("integer", "int64") },
+
+            { typeof(ushort), new Primitive("integer", "uint16") },
+            { typeof(uint), new Primitive("integer", "uint32") },
+            { typeof(ulong), new Primitive("integer", "uint64") },
 
             // Numbers
             { typeof(float), new Primitive("number", "float") },
@@ -24,8 +29,12 @@ namespace Swagger.ObjectModel
 
             // Strings
             { typeof(string), new Primitive("string") },
+            { typeof(char), new Primitive( "string", "char") },
             { typeof(byte), new Primitive("string", "byte") },
             { typeof(DateTime), new Primitive("string", "date-time") },
+            { typeof(TimeSpan), new Primitive("string", "time-span") },
+            { typeof(DateTimeOffset), new Primitive("string", "date-time-offset") },
+            { typeof(Guid), new Primitive("string", "guid") },
 
             // Misc
             { typeof(SwaggerFile), new Primitive("file") },

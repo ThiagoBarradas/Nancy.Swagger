@@ -19,6 +19,8 @@ namespace Nancy.Swagger.Annotations.SwaggerObjects
 
             if (attr.Model != null)
             {
+                modelCatalog.GetModelForType(attr.Model);
+                
                 Schema = SwaggerExtensions.GetSchema(modelCatalog, attr.Model, false);
             }
         }

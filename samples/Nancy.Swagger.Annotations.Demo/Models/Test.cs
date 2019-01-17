@@ -1,6 +1,6 @@
 namespace Nancy.Swagger.Demo.Models
 {
-    public class Address
+    public class Test
     {
         public string Address1 { get; set; }
 
@@ -11,9 +11,5 @@ namespace Nancy.Swagger.Demo.Models
         public string County { get; set; }
 
         public string PostCode { get; set; }
-
-        public Test Testtt { get; set; }
-
-        public HttpStatusCode StatusCode { get; set; }
     }
 }
