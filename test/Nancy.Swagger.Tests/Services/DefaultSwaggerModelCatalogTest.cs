@@ -79,7 +79,7 @@ namespace Nancy.Swagger.Tests.Services
 
             _defaultSwaggerModelCatalog.AddModels(types.ToArray());
 
-            Assert.Equal(2, _defaultSwaggerModelCatalog.Count);            
+            Assert.Equal(1, _defaultSwaggerModelCatalog.Count);            
         }
     }
 }
