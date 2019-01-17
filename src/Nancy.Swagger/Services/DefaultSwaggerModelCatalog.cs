@@ -44,7 +44,11 @@ namespace Nancy.Swagger.Services
                 if (GetModelForType(currentType, false) == null)
                 {
                     var model = new SwaggerModelData(currentType);
-                    Add(model);
+
+                    if (Primitive.IsPrimitive(currentType) == false)
+                    {
+                        Add(model);
+                    }
 
                     var subTypes = currentType?
                         .GetProperties().Where(r => Primitive.IsPrimitive(r.PropertyType) == false)                        

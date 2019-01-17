@@ -20,6 +20,8 @@ namespace Nancy.Swagger.Demo.Models
 
         public Role Role { get; set; }
 
+        public string[] Tagss { get; set; }
+
         public IList<string> Tags { get; set; }
 
         [ModelProperty(Ignore = true)]
